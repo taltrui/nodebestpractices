@@ -209,59 +209,61 @@
 
 # `3. Code Style Practices`
 
-## ![✔] 3.1 Use ESLint
+## ![✔] 3.1 Usa ESLint!
 
-**TL;DR:** ESLint is the de-facto standard for checking code style, not only to identify nitty-gritty spacing issues but also to detect serious code anti-patterns like developers throwing errors without classification. Using ESLint and following the rest of the code style practices below means following the same styles used by the rest of the community, as well as the same code styles used in the core products themselves.
+**TL;DR:** ESLint es el estantard para controlar el estilo del código, no solo para identificar esos básicos problemas de espaciado si no también para detectar serios antipatrones de diseño como arrojar errores sin clasificación. Usar ESLint y seguir el resto de las prácticas de estilo de código que se desarrollan debajo significa seguir el mismo estilo utilizado por el resto de la comunidad, así como también el mismo utilizado en los principales productos.
 
-**Otherwise:** developers will focus on tedious spacing and line-width concerns
 
-<br/><br/>
-
-## ![✔] 3.2 Node JS Specific Plugins
-
-**TL;DR:** On top of ESLint standard rules that cover vanilla JS only, add Node-specific plugins like [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node), [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) and [eslint-plugin-node-security](https://www.npmjs.com/package/eslint-plugin-security)
-
-**Otherwise:** Many faulty Node.JS code patterns might escape under the radar. For example, developers might require(variableAsPath) files with a variable given as path which allows attackers to execute any JS script. Node.JS linters can detect such patterns and complain early
+**De lo contrario:** Los desarrolladores se deberán enfocar en tediosos asuntos de espaciado y ancho de linea.
 
 <br/><br/>
 
-## ![✔] 3.3 Start a Codeblock's Curly Braces in the Same Line 
+## ![✔] 3.2 Plugins específicos de NodeJS
 
-**TL;DR:** The opening curly braces of a code block should be in the same line of the opening statement.
+**TL;DR:** Por encima de las reglas estandares de ESLint que solo cubren JS vainilla, deberías agregar plugins específicos de Node como [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node), [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) and [eslint-plugin-node-security](https://www.npmjs.com/package/eslint-plugin-security) 
 
-### Code Example
+
+**De lo contrario:** Muchos patrones de código erroneos de Node.JS podrían pasar desapercibidos. Por ejemplo, desarrolladores podrían hacer `require(variableComoRuta)` para archivos con una variable dada como ruta que permitiría a los atacantes a ejecutar cualquier script de JS. Los linters de Node.JS pueden detectar estos patrones y dar un aviso temprano.
+
+<br/><br/>
+
+## ![✔] 3.3 Empieza las llaves de un bloque de código en la misma linea 
+
+**TL;DR:** Las llaves que abren un bloque de código deben ir en la misma linea que la sentencia de apertura.
+
+### Ejemplo de código
 ```javascript
-  // Do
-  function someFunction() {
-    // code block
+  // Bien
+  function unaFuncion() {
+    // bloque de código
   }
 
-  //Avoid
-  function someFunction
+  // Mal
+  function unaFuncion()
   {
-    // code block
+    // bloque de código
   }
 ```
 
-**Otherwise:** Deferring from this best practice might lead to unexpected results, as can be seen in the Stackoverflow thread below:
+**De lo contrario:** Evitar esta buena práctica puede llevar a resultados inesperados, como se puede ver en este hilo de StackOverflow:
 
 🔗 [**Read more:** "Why does a results vary based on curly brace placement?" (Stackoverflow)](https://stackoverflow.com/questions/3641519/why-does-a-results-vary-based-on-curly-brace-placement)
 
 <br/><br/>
 
-## ![✔] 3.4 Don't Forget the Semicolon
+## ![✔] 3.4 No olvides el punto y coma!
 
-**TL;DR:** While not unanimously agreed upon, it is still recommended to put a semicolon at the end of each statement. This will make your code more readable and explicit to other developers who read it.
+**TL;DR:** Aunque no hay un acuerdo unanime sobre esto, sigue siendo recomendable poner un punto y coma al final de cada sentencia. Esto hará tu código más legible y explicito para otros desarrolladores que lo lean.
 
-**Otherwise:** As seen in the previous section, Javascript's interpeter auto adds semicolon at the end of a statement if there isn't one which can lead to some undesired results.
+**De lo contrario:** Como se vio en la sección anterior, el interprete de Javascript agrega puntos y coma automáticamente al final de cada sentencia a menos que haya uno que pueda llevar a resultados indeseados.
 
 <br/><br/>
 
-## ![✔] 3.5 Name Your Functions
+## ![✔] 3.5 Dale un nombre a tus funciones
 
-**TL;DR:** Name all functions, including closures and callbacks. Avoid anonymous functions. This is especially useful when profiling a node app. Naming all functions will allow you to easily understand what you're looking at when cheking a memory snapshot.
+**TL;DR:** Nombra todas tus funciones, incluyendo closures y callbacks. Evita funciones anónimas. Esto es especialmente util cuando perfilas una aplicación Node. Nombrar todas las funciones te permitirá entender fácilmente qué estás buscando cuando revisas un snapshot de memoria.
 
-**Otherwise:** Debugging production issues using a core dump (memory snapshot) might become challenging as you notice significant memory consumption from functions with no name.
+**De lo contrario:** Debugear problemas en producción utilizando un volcado del núcleo (snapshot de memoria) puede convertirse en todo un reto a medida que encuentras un gran uso de memoria de funciones que no tienen nombre.
 
 <br/><br/>
 
